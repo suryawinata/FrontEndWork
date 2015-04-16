@@ -1,11 +1,21 @@
 @lightRed: #fdd;
 @lightBlue: #ddf;
 @lightGreen: #dfd;
-@defaultThemeColor: @lightGreen;
+@defaultThemeColor:     spin(@lightBlue, 100);;
+@defaultRadius:30px;
+@defaultShapeWidth:200px;
+@borderSize:@defaultShapeWidth * 0.1;
+@borderColor:darken(desaturate(@defaultThemeColor, 100%), 20%);
 .Round{
     -webkit-border-radius:9999px;
        -moz-border-radius:9999px;
             border-radius:9999px;
+}
+
+.RoundedSquare(@radius:@defaultRadius){
+    -webkit-border-radius:@radius;
+       -moz-border-radius:@radius;
+            border-radius:@radius;
 }
 
 .shape{
@@ -16,5 +26,21 @@
     margin: 20px;
 }
 #shape1{
+    &:hover{
+        background:@lightRed;
+    }
     .Round
+}
+
+#header{
+    h1{
+
+    }
+}
+#shape2{
+    .RoundedSquare;
+}
+#shape3{
+    .RoundedSquare(60px);
+    border: @borderSize solid @borderColor;
 }
