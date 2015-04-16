@@ -1,0 +1,17 @@
+.Round {
+  -webkit-border-radius: 9999px;
+  -moz-border-radius: 9999px;
+  border-radius: 9999px;
+}
+.shape {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: #ddffdd;
+  margin: 20px;
+}
+#shape1 {
+  -webkit-border-radius: 9999px;
+  -moz-border-radius: 9999px;
+  border-radius: 9999px;
+}
