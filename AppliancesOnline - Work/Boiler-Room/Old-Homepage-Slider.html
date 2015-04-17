@@ -1,0 +1,51 @@
+<script type="text/javascript">
+window.sliders = [
+{
+"slider_url": "/images/opt/promotions/samsung-coles-gift-card/samsung-coles-homepageslider.jpg",
+"click_url": "/samsung-free-coles-gift-card/"
+},{
+"slider_url": "/images/opt/promotions/brands/Kenwood/2015/Mothers-Day/kenwood-new-small-homepage-banner.jpg",
+"click_url": "/kenwood-mothersday-promo-2015/"
+},{
+"slider_url": "/images/opt/promotions/reviews/DT_Homepage_Slider_110314_6.jpg",
+"click_url": "/product-reviews/"
+},{
+"slider_url": "/images/opt/homepage/sliders/DT_Homepage_Slider_260314_5.jpg",
+"click_url": "/price-match/"
+}
+];
+
+$(function() {
+  var sliderHtml = '<div class="content2" style="left: -975px;">';
+  for (s in sliders)
+  {
+  sliderHtml += '<div class="appliance2">';
+  if (sliders[s].click_url)
+    sliderHtml += '<a href="'+sliders[s].click_url+'">';
+  sliderHtml += '<img src="'+sliders[s].slider_url+'" alt="" />';
+  if (sliders[s].click_url)
+    sliderHtml += '</a>';
+  sliderHtml += '</div>';
+  }
+  sliderHtml += '</div></div>';
+  $('#slide_container2').prepend(sliderHtml);
+  window.jQuery('#main_carousel2').initAOLCarousel2();
+  
+  $('#slide_container2 .appliance2').click(function() {
+  var desc = $(this).children('a').length ? $(this).children('a').attr('href') : $(this).children('img').attr('src');
+  _gaq.push(['_trackEvent', 'Home page carousel', 'Click', desc]);
+  });
+
+  $('#slide_container2 .appliance2>a>img').click(function() {
+    var x = $(this).attr('src');
+    var y = x.split('/');var imageName = (y[y.length - 1]);
+    dataLayer.push({
+      'eventCategory': 'Banner',
+      'eventAction': 'Homepage',
+      'eventLabel': imageName,
+      'event': 'ga-event'
+    });
+  });
+});
+
+</script>

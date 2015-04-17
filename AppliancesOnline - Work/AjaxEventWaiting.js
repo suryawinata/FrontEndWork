@@ -39,6 +39,9 @@ $(function () {
     });
 });
 
+
+/** code below need to be injected inside the postcode experiment html**/
+
 var popupTrigger = 0;
 $( ".input-block-postcode-popup #postcode-locality-lookup" ).on('input', function() {
     if($( ".input-block-postcode-popup #postcode-locality-lookup" ).val().length > 2){
@@ -47,4 +50,15 @@ $( ".input-block-postcode-popup #postcode-locality-lookup" ).on('input', functio
             popupTrigger = 1;
         }
     }
+});
+
+$(".popup-postcode").closest("#fancybox-wrap").find("#fancybox-close").click(function(){
+    StoreFrontLayer.push({
+        'eventCategory' : 'Pop-up',
+        'eventAction': 'postcode-experiment',
+        'eventLabel': 'Postcode Select Pop Up Page',
+        'event': 'ga-event'
+    });
+    console.log('closing the popup');   
+    $.cookie('closeThePopupPostcode', '1', { expires: 30, path: '/' });
 });

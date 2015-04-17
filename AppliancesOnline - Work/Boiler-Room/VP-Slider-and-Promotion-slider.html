@@ -1,0 +1,139 @@
+<script type="text/javascript">
+window.promotionsliders = [
+{
+"slider_url": "/images/opt/promotions/samsung-coles-gift-card/homepage-slider-experiment.jpg",
+"click_url": "/samsung-free-coles-gift-card/"
+},{
+"slider_url": "/images/opt/promotions/brands/Kenwood/2015/Mothers-Day/kenwood-new-small-homepage-banner.jpg",
+"click_url": "/kenwood-mothersday-promo-2015/"
+},{
+"slider_url": "/images/opt/promotions/promotion-slider/free-delivery-pricematch.jpg",
+"click_url": "/price-match/"
+},{
+"slider_url": "/images/opt/promotions/promotion-slider/reviews.jpg",
+"click_url": "/product-reviews/"
+}
+];
+var maximumrandom = 6
+var minimumrandom = 1;        
+var randomVPSlider = Math.floor(Math.random() * (maximumrandom - minimumrandom + 1)) + minimumrandom;  
+window.vpsliders = [
+{
+"slider_url": "/images/opt/promotions/VP-slider/valuebanner-0"+randomVPSlider+".jpg",
+"click_url": "/legendary-service/"
+}
+];
+
+$(function() {
+  /**Start Code For Promotion Banner Markup Generation**/
+  var promosliderHtml = '<div class="promotion-sliders">';
+  for (s in promotionsliders)
+  {
+    promosliderHtml += '<div class="promotion-slider">';
+    if (promotionsliders[s].click_url){
+      promosliderHtml += '<a href="'+promotionsliders[s].click_url+'">';
+      promosliderHtml += '<img src="'+promotionsliders[s].slider_url+'" alt="" />';
+      promosliderHtml += '</a>';
+      promosliderHtml += '</div>';
+    }
+  }
+  //add signup html
+  promosliderHtml += '<div class="promotion-slider signupblock"> <div class="submission-area"><div class="error-succes-block"><span id="email-error">Error or valid email required</span><span id="email-success">Thank you for subscribing</span></div> <input class="email-signup-input" pattern="^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$" placeholder="Enter your email address"></input> <div class="email-sign-button-area"> <a href="#" id="email-submission-button-signup"> Get Offers <img class="getoffersign" src="/images/opt/interactive-slider/enter-email.png"> </a> </div><div class="terms-condition-signup-slider"> <p>By clicking the button you are signing up to our mailing list, you have read and agree to the <a href="/trading-terms.aspx" target="_blank">Website Terms</a> and the <a href="/privacy-policy.aspx" target="_blank"> Privacy Policy.</a></p></div></div></div>';
+  promosliderHtml += '</div></div>'; 
+  $('.promotion-slider-area').prepend(promosliderHtml);
+  $('.promotion-sliders').slick({
+    autoplay: true,
+    autoplaySpeed: 5000,
+    prevArrow:'<button type="button" class="carousel-prev">Previous</button>',
+    nextArrow:'<button type="button" class="carousel-next">Next</button>'
+  });
+  /**End Code For Promotion Banner Markup Generation**/
+
+  /**For VP Banner Markup Generation**/
+  var vpsliderHtml = '<div class="vp-sliders">';
+  for (s in vpsliders)
+  {
+    vpsliderHtml += '<div class="vp-slider">';
+    if (sliders[s].click_url){
+      vpsliderHtml += '<a href="'+vpsliders[s].click_url+'">';
+      vpsliderHtml += '<img src="'+vpsliders[s].slider_url+'" alt="" />';
+      vpsliderHtml += '</a>';
+      vpsliderHtml += '</div>';
+    }
+  }
+  vpsliderHtml += '</div></div>'; 
+  $('.vp-slider-area').prepend(vpsliderHtml);
+  $('.vp-sliders').slick({    
+    autoplay: true,
+    autoplaySpeed: 5000,
+    prevArrow:'<button type="button" class="carousel-prev">Previous</button>',
+    nextArrow:'<button type="button" class="carousel-next">Next</button>'
+  });
+  /**End Code For VP Banner Markup Generation**/
+
+
+  /**For Email Signup Banner Markup Generation**/
+  function validateEmailSignup(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+  $("#email-submission-button-signup").on("click", function(e) {
+    $("#email-success").hide();
+    $("#email-error").hide();
+    console.log("A");
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("B");
+    var emailSign = $(this).closest(".submission-area").find(".email-signup-input").val();
+    console.log( validateEmailSignup(emailSign));
+    console.log(!$(document).data("signupInProc"));
+    if(validateEmailSignup(emailSign) && !$(document).data("signupInProc")){
+      $(document).data("signupInProc", true);
+      var postData = {
+        signupEmail: emailSign,
+        signupName: "NoDollarOffer",
+        signupPostCode: $("#postcode").val() ? $("#postcode").val() : "0000",
+        exactTargetKey: "5263",
+        exactTargetClientId: "1339590",
+        signupSubmit: "Submit"
+      };
+      $.ajax({
+          type: "POST",
+          url: "/NewsletterSignupFooter.aspx",
+          data: postData,
+          beforeSend: function() {},
+          complete: function(xhr, status) {
+              $(document).data("signupInProc", false);
+              console.log(status);
+              if (status == "success") {
+                  $("#email-success").show();
+                  $(".email-signup-input").val("");
+                  $("#email-error").hide();
+              } else {
+                  $("#email-success").hide();
+                  $(".email-signup-input").val("");
+                  $("#email-error").show();
+              }
+          }
+      });
+    }
+    else {
+      $(".email-signup-input").val("");
+      $("#email-success").hide();
+      $("#email-error").show();
+    }
+  });
+
+  $(".email-signup-input").on("keypress", function(event) {
+      $("#email-success").hide();
+      $("#email-error").hide();
+      if (event.which == 13) {
+        event.preventDefault();
+        event.stopPropagation();
+        $("#email-submission-button-signup").trigger("click");
+      }
+  });
+});
+
+</script>
