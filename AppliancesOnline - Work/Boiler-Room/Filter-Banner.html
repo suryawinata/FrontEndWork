@@ -1,17 +1,16 @@
 <script>
 $(function() {
-  $('#samsung-campaign-promo').fancybox({'type': 'iframe'});
+    $('#samsung-campaign-promo').fancybox({'type': 'iframe'});
+    $('#kenwood-campaign-promo').fancybox({'type': 'iframe'});
 });
 if (window.location.href.indexOf("/top-mount-fridges/") > -1 || window.location.href.indexOf("/3-4-door-fridges/") > -1 || window.location.href.indexOf("/All-Fridges-and-Freezers-Cat/") > -1 ){
-  var markup = "<a id='kenwood-campaign-promo' href='/public/snippets/productbadges/Samsung Coles 15.html'><img style='padding-left: 20px;padding-top: 10px;' src='/images/opt/promotions/samsung-coles-gift-card/samsung-coles-filter-page-banner.jpg'></a>"
-  $(markup).insertBefore($("#category #cat-filter"));
+    var markup = "<a id='samsung-campaign-promo' href='/public/snippets/productbadges/Samsung Coles 15.html'><img style='padding-left: 20px;padding-top: 10px;' src='/images/opt/promotions/samsung-coles-gift-card/samsung-coles-filter-page-banner.jpg'></a>"
+    $(markup).insertBefore($("#category #cat-filter"));
 }
     
-$(function() {
-  $('#kenwood-campaign-promo').fancybox({'type': 'iframe'});
-});
 if (window.location.href.indexOf("/food-mixers/") > -1 || window.location.href.indexOf("/food-processors/") > -1 ){
-  var markup = "<a id='kenwood-campaign-promo' href='/public/snippets/productbadges/Kenwood Bonus.html'><img style='padding-left: 20px;padding-top: 10px;' src='/images/opt/promotions/brands/Kenwood/2015/Mothers-Day/filter-page-kenwood.jpg'></a>"
-  $(markup).insertBefore($("#category #cat-filter"));
+    var markup = "<a id='kenwood-campaign-promo' href='/public/snippets/productbadges/Kenwood Bonus.html'><img style='padding-left: 20px;padding-top: 10px;' src='/images/opt/promotions/brands/Kenwood/2015/Mothers-Day/filter-page-kenwood.jpg'></a>"
+    $(markup).insertBefore($("#category #cat-filter"));
 }
+
 </script>
