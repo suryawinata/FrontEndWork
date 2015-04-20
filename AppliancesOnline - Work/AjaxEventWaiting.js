@@ -41,16 +41,31 @@ $(function () {
 
 
 /** code below need to be injected inside the postcode experiment html**/
-
+function collectGAeventinPopUp (area) {
+    $( document ).ajaxSuccess(function( event, xhr, settings ) {
+        if ( settings.url.indexOf("/location/search/") > -1  ) {
+            if($('.ac_results').is(':visible')) {
+                StoreFrontLayer.push({
+                    'eventCategory': 'Postcode',
+                    'eventAction': area,
+                    'eventLabel': 'postcode-area-engage',
+                    'event': 'ga-event'
+                });
+                console.log(area);
+            }
+        }
+    });
+}
 var popupTrigger = 0;
 $( ".input-block-postcode-popup #postcode-locality-lookup" ).on('input', function() {
     if($( ".input-block-postcode-popup #postcode-locality-lookup" ).val().length > 2){
         if (popupTrigger == 0) {
-            collectGAevent ("popup");
+            collectGAeventinPopUp ("popup");
             popupTrigger = 1;
         }
     }
 });
+
 
 $(".popup-postcode").closest("#fancybox-wrap").find("#fancybox-close").click(function(){
     StoreFrontLayer.push({
