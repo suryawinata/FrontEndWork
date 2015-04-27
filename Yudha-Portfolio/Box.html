@@ -1,0 +1,64 @@
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css"/>
+<style>
+.photo img{
+    height: 200px;
+}
+.photo {
+    display: inline-block;
+    padding-right: 10px;
+}
+</style>
+<div class="flipBox">
+    <div class="photo">
+        <a class="fancyboximage" rel="group1" href="http://i292.photobucket.com/albums/mm5/yudhawardhana/Sky_zps6n6tkykh.jpg">
+            <img src="http://i292.photobucket.com/albums/mm5/yudhawardhana/Sky_zps6n6tkykh.jpg"/>
+        </a>
+    </div>
+    <div class="photo">
+        <a class="fancyboximage" rel="group1" href="http://i292.photobucket.com/albums/mm5/yudhawardhana/Poster%208_zpsmrnz4fsh.png">
+            <img src="http://i292.photobucket.com/albums/mm5/yudhawardhana/Poster%208_zpsmrnz4fsh.png"/>
+        </a>
+    </div>
+    <div class="photo">
+        <a class="fancyboximage" rel="group1" href="http://i292.photobucket.com/albums/mm5/yudhawardhana/Poster%207_zps1mif0kdw.png">
+            <img src="http://i292.photobucket.com/albums/mm5/yudhawardhana/Poster%207_zps1mif0kdw.png"/>
+        </a>
+    </div>
+    <div class="photo">
+        <a class="fancyboximage" rel="group1" href="http://i292.photobucket.com/albums/mm5/yudhawardhana/Poster%201_zpsquqsqnus.jpg">
+            <img src="http://i292.photobucket.com/albums/mm5/yudhawardhana/Poster%201_zpsquqsqnus.jpg"/>
+        </a>
+    </div>
+    <div class="photo">
+        <a class="fancyboximage" rel="group1" href="http://i292.photobucket.com/albums/mm5/yudhawardhana/Poster%203_zpsqgjq26sj.png">
+            <img src="http://i292.photobucket.com/albums/mm5/yudhawardhana/Poster%203_zpsqgjq26sj.png"/>
+        </a>
+    </div>
+    <div class="photo">
+        <a class="fancyboximage" rel="group1" href="http://i292.photobucket.com/albums/mm5/yudhawardhana/Poster%202_zpssckapl5t.jpg">
+            <img src="http://i292.photobucket.com/albums/mm5/yudhawardhana/Poster%202_zpssckapl5t.jpg"/>
+        </a>
+    </div>
+    <div class="photo">
+        <a class="fancyboximage" rel="group1" href="http://i292.photobucket.com/albums/mm5/yudhawardhana/Poster%206_zpsy4jtue7l.jpg">
+            <img src="http://i292.photobucket.com/albums/mm5/yudhawardhana/Poster%206_zpsy4jtue7l.jpg"/>
+        </a>
+    </div>
+</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css"></script>
+<script type="text/javascript">
+$('.flipBox').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    centerMode: true,
+    variableWidth: true
+});
+$("a.fancyboximage").fancybox();
+</script>
